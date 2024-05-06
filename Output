@@ -1,0 +1,48 @@
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 12316 entries, 0 to 12315
+Data columns (total 32 columns):
+ #   Column                       Non-Null Count  Dtype 
+---  ------                       --------------  ----- 
+ 0   Time                         12316 non-null  object
+ 1   Day_of_week                  12316 non-null  object
+ 2   Age_band_of_driver           12316 non-null  object
+ 3   Sex_of_driver                12316 non-null  object
+ 4   Educational_level            11575 non-null  object
+ 5   Vehicle_driver_relation      11737 non-null  object
+ 6   Driving_experience           11487 non-null  object
+ 7   Type_of_vehicle              11366 non-null  object
+ 8   Owner_of_vehicle             11834 non-null  object
+ 9   Service_year_of_vehicle      8388 non-null   object
+ 10  Defect_of_vehicle            7889 non-null   object
+ 11  Area_accident_occured        12077 non-null  object
+ 12  Lanes_or_Medians             11931 non-null  object
+ 13  Road_allignment              12174 non-null  object
+ 14  Types_of_Junction            11429 non-null  object
+ 15  Road_surface_type            12144 non-null  object
+ 16  Road_surface_conditions      12316 non-null  object
+ 17  Light_conditions             12316 non-null  object
+ 18  Weather_conditions           12316 non-null  object
+ 19  Type_of_collision            12161 non-null  object
+ 20  Number_of_vehicles_involved  12316 non-null  int64 
+ 21  Number_of_casualties         12316 non-null  int64 
+ 22  Vehicle_movement             12008 non-null  object
+ 23  Casualty_class               12316 non-null  object
+ 24  Sex_of_casualty              12316 non-null  object
+ 25  Age_band_of_casualty         12316 non-null  object
+ 26  Casualty_severity            12316 non-null  object
+ 27  Work_of_casuality            9118 non-null   object
+ 28  Fitness_of_casuality         9681 non-null   object
+ 29  Pedestrian_movement          12316 non-null  object
+ 30  Cause_of_accident            12316 non-null  object
+ 31  Accident_severity            12316 non-null  object
+dtypes: int64(2), object(30)
+memory usage: 3.0+ MB
+/opt/conda/lib/python3.10/site-packages/seaborn/_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+  with pd.option_context('mode.use_inf_as_na', True):
+/opt/conda/lib/python3.10/site-packages/seaborn/_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+  with pd.option_context('mode.use_inf_as_na', True):
+/opt/conda/lib/python3.10/site-packages/seaborn/_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+  with pd.option_context('mode.use_inf_as_na', True):
+
+Accuracy: 7.9
+add Codeadd Markdown
