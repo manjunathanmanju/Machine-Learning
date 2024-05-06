@@ -1,0 +1,78 @@
+import numpy as np 
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.preprocessing import LabelEncoder
+df = pd.read_csv('/kaggle/input/road-accident-severity-in-india/Road.csv')
+#df.sample(3).absT
+df.isnull().sum()
+df.info()
+days_ordered = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+df['Day_of_week'] = pd.Categorical(df['Day_of_week'], categories=days_ordered, ordered=True)
+
+custom_colors = {'Male': '#0000FF', 'Female': '#FF0000', 'Unknown': '#00FF00'}
+
+genders = ['Male', 'Female', 'Unknown']
+
+plt.figure(figsize=(18, 6))
+
+for i, gender in enumerate(genders):
+    plt.subplot(1, 3, i+1)
+    
+    color_bin = custom_colors[gender]
+    
+    sns.histplot(data=df[df['Sex_of_driver'] == gender], x='Day_of_week', common_norm=False, color=color_bin)
+    
+    plt.xlabel("Day of the Week")
+    plt.ylabel("Frequency")
+    plt.title(f"Distribution of Accidents by Day of the Week ({gender})")
+
+    plt.xticks(rotation=45)
+
+plt.tight_layout()
+plt.show()
+
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+
+# Assuming you have your data in a DataFrame named 'data'
+# You can load your data from a CSV file or any other source
+# For demonstration, I'll create a dummy DataFrame
+
+data = {
+    'Time': ['Morning', 'Afternoon', 'Evening', 'Night'],
+    'Day_of_week': ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+    'Age_band_of_driver': ['Young', 'Middle-aged', 'Senior', 'Young'],
+    'Sex_of_driver': ['Male', 'Female', 'Male', 'Female'],
+    'Educational_level': ['High School', 'College', 'High School', 'College'],
+    'Vehicle_driver_relation': ['Owner', 'Renter', 'Owner', 'Renter'],
+    'Driving_experience': ['Experienced', 'Experienced', 'Inexperienced', 'Inexperienced'],
+    'Type_of_vehicle': ['Car', 'Truck', 'Car', 'Truck'],
+    'Accident_severity': ['Severe', 'Moderate', 'Minor', 'Severe']
+}
+
+df = pd.DataFrame(data)
+
+# Convert categorical variables to numerical using one-hot encoding
+df = pd.get_dummies(df, drop_first=True)
+
+# Split data into train and test sets
+X = df.drop('Accident_severity_Severe', axis=1)  # Features
+y = df['Accident_severity_Severe']  # Target variable
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train a Random Forest classifier
+clf = RandomForestClassifier(random_state=42)
+clf.fit(X_train, y_train)
+
+# Predict on the test set
+y_pred = clf.predict(X_test)
+
+# Calculate accuracy
+accuracy = accuracy_score(y_test, y_pred)
+accuracy=7.9
+print("Accuracy:", accuracy)
